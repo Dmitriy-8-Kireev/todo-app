@@ -5,6 +5,8 @@ import TodoList from './components/TodoList';
 import AppHeader from './components/AppHeader';
 import SearchPanel from './components/SearchPanel';
 
+import './index.css';
+
 const todoItem = [
   { id: 1, label: 'Попить кофе', important: false, done: false },
   { id: 2, label: 'Изучить аспекты React', important: true, done: false },
@@ -14,9 +16,14 @@ const todoItem = [
 const App = () => {
   return (
     <div>
-      <AppHeader />
-      <SearchPanel />
-      <TodoList items={todoItem} />
+      <div className="todo-app">
+        <AppHeader />
+
+        <div className="search-panel d-flex">
+          <SearchPanel />
+        </div>
+        <TodoList items={todoItem} />
+      </div>
     </div>
   );
 };
