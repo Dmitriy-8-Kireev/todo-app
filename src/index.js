@@ -6,6 +6,7 @@ import AppHeader from './components/AppHeader';
 import SearchPanel from './components/SearchPanel';
 
 import './index.css';
+import ItemStatusFilter from './components/ItemStatusFilter';
 
 const todoItem = [
   { id: 1, label: 'Попить кофе', important: false, done: false },
@@ -21,6 +22,7 @@ const App = () => {
 
         <div className="search-panel d-flex">
           <SearchPanel />
+          <ItemStatusFilter />
         </div>
         <TodoList items={todoItem} />
       </div>

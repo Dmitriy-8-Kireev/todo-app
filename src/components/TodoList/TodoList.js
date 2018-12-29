@@ -5,10 +5,10 @@ import './TodoList.css';
 
 const TodoList = ({ items }) => {
   const listItems = items.map(item => {
-    const { id, ...items } = item;
+    const { id, ...itemProps } = item;
     return (
       <li key={id} className="list-group-item">
-        <TodoListItem {...items} />
+        <TodoListItem {...itemProps} />
       </li>
     );
   });
@@ -17,5 +17,5 @@ const TodoList = ({ items }) => {
 
 export default TodoList;
 
-// Компонент спроектирован так, чтобы он отвечал для отображения списка,
+// Компонент спроектирован так, чтобы он отвечал только за отображения списка,
 // Данные получает через свойства items

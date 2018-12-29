@@ -1,6 +1,9 @@
+body {
+  background: #ccc;
+}
 .todo-app {
-  margin: 2rem auto 0 auto;
-  max-width: 400px;
+  margin: 4rem auto 0 auto;
+  max-width: 600px;
 }
 
 .top-panel {
