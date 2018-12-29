@@ -9,7 +9,7 @@ const ItemStatusFilter = () => {
         Все
       </button>
       <button type="button" className="btn btn-outline-secondary">
-        Надо
+        Хочу
       </button>
       <button type="button" className="btn btn-outline-secondary">
         Сделано
