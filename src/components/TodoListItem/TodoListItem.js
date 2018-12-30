@@ -15,13 +15,13 @@ class TodoListItem extends Component {
   };
 
   markImportant = () => {
-    this.setState(({ mportant }) => {
-      return { important: true };
+    this.setState(({ important }) => {
+      return { important: !important };
     });
   };
 
   render() {
-    const { label } = this.props;
+    const { label, onDelete } = this.props;
     const { done, important } = this.state;
 
     let classNames = 'todo-list-item';
@@ -50,7 +50,7 @@ class TodoListItem extends Component {
           type="button"
           className="btn btn-outline-danger btn-sm float-right"
         >
-          <i className="fa fa-trash-o" />
+          <i className="fa fa-trash-o" onClick={onDelete} />
         </button>
       </span>
     );
