@@ -4,10 +4,11 @@ import TodoList from '../TodoList';
 import AppHeader from '../AppHeader';
 import SearchPanel from '../SearchPanel';
 import ItemStatusFilter from '../ItemStatusFilter';
+import AddItemForm from '../AddItemForm';
 
 import './App.css';
 
-export default class todoItem extends Component {
+export default class App extends Component {
   state = {
     todoItem: [
       { id: 1, label: 'Попить кофе', important: false, done: false },
@@ -21,6 +22,8 @@ export default class todoItem extends Component {
     ]
   };
 
+  maxId = 55;
+
   deleteItem = id => {
     this.setState(({ todoItem }) => {
       const idx = todoItem.findIndex(el => el.id === id);
@@ -30,18 +33,36 @@ export default class todoItem extends Component {
       };
     });
   };
+
+  addItem = text => {
+    const newItem = {
+      key: this.maxId++,
+      id: this.maxId++,
+      label: text,
+      important: false,
+      done: false
+    };
+
+    this.setState(({ todoItem }) => {
+      const newArray = [...todoItem, newItem];
+
+      return {
+        todoItem: newArray
+      };
+    });
+  };
+
   render() {
     return (
-      <div>
-        <div className="todo-app">
-          <AppHeader done={1} toDo={3} />
+      <div className="todo-app">
+        <AppHeader done={1} toDo={3} />
 
-          <div className="search-panel d-flex">
-            <SearchPanel />
-            <ItemStatusFilter />
-          </div>
-          <TodoList items={this.state.todoItem} onDelete={this.deleteItem} />
+        <div className="search-panel d-flex">
+          <SearchPanel />
+          <ItemStatusFilter />
         </div>
+        <TodoList items={this.state.todoItem} onDelete={this.deleteItem} />
+        <AddItemForm onAdd={this.addItem} />
       </div>
     );
   }
