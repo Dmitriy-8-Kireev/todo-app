@@ -24,6 +24,13 @@ export default class App extends Component {
 
   maxId = 55;
 
+  onImportant = id => {
+    console.log('Задумано', id);
+  };
+  onDone = id => {
+    console.log('Выполнено', id);
+  };
+
   deleteItem = id => {
     this.setState(({ todoItem }) => {
       const idx = todoItem.findIndex(el => el.id === id);
@@ -61,7 +68,12 @@ export default class App extends Component {
           <SearchPanel />
           <ItemStatusFilter />
         </div>
-        <TodoList items={this.state.todoItem} onDelete={this.deleteItem} />
+        <TodoList
+          items={this.state.todoItem}
+          onDelete={this.deleteItem}
+          onImportant={this.onImportant}
+          onDone={this.onDone}
+        />
         <AddItemForm onAdd={this.addItem} />
       </div>
     );
