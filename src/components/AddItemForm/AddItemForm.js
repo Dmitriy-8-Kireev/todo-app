@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './AddItemForm.css';
 
-const AddItemForm = ({ onAdd }) => {
-  return (
-    <div className="item-add-form">
-      <button
-        className="btn btn-outline-secondary"
-        onClick={() => onAdd('Lala-Lend')}
-      >
-        Добавить
-      </button>
-    </div>
-  );
-};
+export default class AddItemForm extends Component {
+  state = {
+    label: ''
+  };
 
-export default AddItemForm;
+  onLabelChange = e => {
+    this.setState({
+      label: e.target.value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.onItemAdded(this.state.label);
+    this.setState({
+      label: ''
+    });
+  };
+
+  render() {
+    return (
+      <form className="item-add-form d-flex" onSubmit={this.onSubmit}>
+        <input
+          type="text"
+          className="form-control"
+          onChange={this.onLabelChange}
+          placeholder="может что-нибудь"
+          value={this.state.label}
+        />
+        <button className="btn btn-outline-secondary">Ещё</button>
+      </form>
+    );
+  }
+}
